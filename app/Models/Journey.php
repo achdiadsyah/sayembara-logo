@@ -15,5 +15,6 @@ class Journey extends Model
         'name',
         'slug',
         'order_number',
+        'description',
     ];
 }

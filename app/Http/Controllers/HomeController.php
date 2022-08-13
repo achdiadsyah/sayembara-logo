@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\JourneyHistory;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 
@@ -11,7 +12,12 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return view('home');
+        $data = [
+            'title'             => 'Dashboard',
+            'journeys'          => JourneyHistory::where('user_id', Auth::id())->with('journey')->get(),
+            'latest_journey'    => JourneyHistory::where('user_id', Auth::id())->orderBy('created_at', 'desc')->limit(1)->get(),
+        ];
+        return view('home', $data);
     }
 
     public function completing()
