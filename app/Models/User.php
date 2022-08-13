@@ -37,4 +37,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'is_admin' => 'boolean',
     ];
+
+    public function document()
+    {
+        return $this->hasOne(Document::class);
+    }
 }

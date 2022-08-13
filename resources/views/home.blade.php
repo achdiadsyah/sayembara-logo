@@ -4,11 +4,11 @@
 
 @if(auth()->user()->is_admin == 0)
 
-@include('dashboard-user')
+@include('_users.dashboard-user')
 
 @else
 
-@include('dashboard-admin')
+@include('_admin.dashboard-admin')
 
 @endif
 

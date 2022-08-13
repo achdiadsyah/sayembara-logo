@@ -15,10 +15,9 @@ return new class extends Migration
     {
         Schema::create('documents', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('user_id');
+            $table->string('user_id')->unique();
             $table->foreign('user_id')->references('id')->on('users');
-            $table->string('folder_name');
-            $table->string('file_name');
+            $table->string('file');
             $table->longText('description');
             $table->timestamps();
         });

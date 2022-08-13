@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\JourneyHistory;
+use App\Models\Document;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,8 +17,25 @@ class HomeController extends Controller
             'title'             => 'Dashboard',
             'journeys'          => JourneyHistory::where('user_id', Auth::id())->with('journey')->get(),
             'latest_journey'    => JourneyHistory::where('user_id', Auth::id())->orderBy('created_at', 'desc')->limit(1)->get(),
+            'document'          => Document::where('user_id', auth()->user()->id)->first()
         ];
         return view('home', $data);
+    }
+
+    public function info()
+    {
+        $data = [
+            'title'             => 'Layanan Informasi',
+        ];
+        return view('_users.info', $data);
+    }
+
+    public function syarat(Request $request)
+    {
+        $data = [
+            'title'             => 'Upload Karya'
+        ];
+        return view('_users.syarat', $data);
     }
 
     public function completing()
@@ -27,6 +45,7 @@ class HomeController extends Controller
         if ($data->name == NULL || $data->nik == NULL || $data->phone == NULL || $data->registered_as == NULL || $data->registered_as_info == NULL) {
             return view('auth.completing');
         }
+        return redirect('home');
     }
 
     public function updateData(Request $request)

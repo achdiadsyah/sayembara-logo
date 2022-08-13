@@ -15,6 +15,8 @@
 
     <link href="{{asset('assets/css/costum.css')}}" rel="stylesheet">
 
+    <link href="{{asset('assets/css/filepond.css')}}" rel="stylesheet">
+
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     
     @stack('head-script')
@@ -41,21 +43,21 @@
             @if(auth()->user()->is_admin == 0)
 
             <li class="nav-item {{ (request()->is('syarat-perlombaan')) ? 'active' : '' }}">
-                <a class="nav-link" href="{{route('home')}}">
+                <a class="nav-link" href="{{route('syarat')}}">
                     <i class="fas fa-fw fa-pen"></i>
                     <span>Syarat Perlombaan</span>
                 </a>
             </li>
 
             <li class="nav-item {{ (request()->is('upload-karya')) ? 'active' : '' }}">
-                <a class="nav-link" href="{{route('home')}}">
+                <a class="nav-link" href="{{route('karya')}}">
                     <i class="fas fa-fw fa-upload"></i>
                     <span>Upload Karya</span>
                 </a>
             </li>
 
-            <li class="nav-item {{ (request()->is('contact')) ? 'active' : '' }}">
-                <a class="nav-link" href="{{route('home')}}">
+            <li class="nav-item {{ (request()->is('info')) ? 'active' : '' }}">
+                <a class="nav-link" href="{{route('info')}}">
                     <i class="fas fa-fw fa-phone"></i>
                     <span>Layanan Informasi</span>
                 </a>
@@ -176,10 +178,10 @@
 
     <script src="{{asset('assets/vendor/jquery/jquery.min.js')}}"></script>
     <script src="{{asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-
     <script src="{{asset('assets/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
-
     <script src="{{asset('assets/js/sb-admin-2.min.js')}}"></script>
+    <script src="https://unpkg.com/filepond/dist/filepond.min.js"></script>
+    <script src="https://unpkg.com/jquery-filepond/filepond.jquery.js"></script>
 
     @stack('foot-script')
     

@@ -17,8 +17,10 @@
                                 <div class="tl-date"><i class="fa fa-clock"></i> {{ \Carbon\Carbon::parse($item->created_at)->format('d M Y | h:i:s')}}</div>
                                 <div class="tl-description text-muted py-1">{{$item->journey->description}}</div>
                                 @if($item->journey->slug == "new")
-                                <a href="" class="btn btn-sm btn-warning">Lihat Syarat</a>
-                                <a href="" class="btn btn-sm btn-primary">Upload Karya Anda</a>
+                                <a href="{{route('syarat')}}" class="btn btn-sm btn-warning">Lihat Syarat</a>
+                                    @if(empty($document))
+                                        <a href="{{route('karya')}}" class="btn btn-sm btn-primary">Upload Karya Anda</a>
+                                    @endif
                                 @endif
                                 @if($item->journey->slug == "need-review")
                                 <button class="btn btn-sm btn-info" type="button" data-toggle="modal" data-target="#showUploaded">
@@ -37,12 +39,23 @@
         </div>
     </div>
 </div>
+
+@if(!empty($document))
 <div class="modal fade" id="showUploaded" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-body">
-
+                <div class="text-center">
+                    <p class="lead">Karya Anda :</p>
+                    <img src="{{ asset('storage/'.auth()->user()->document->file) }}" class="img-thumbnail" width="200px" onclick="window.open(this.src)" alt="Karya">
+                    <hr>
+                    <p class="lead">Penjelasan Anda :</p>
+                    <textarea class="form-control" rows="15" disabled>{{auth()->user()->document->description}}</textarea>
+                    <hr>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
     </div>
 </div>
+@endif

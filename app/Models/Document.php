@@ -14,7 +14,12 @@ class Document extends Model
     protected $fillable = [
         'user_id',
         'folder_name',
-        'file_name',
+        'file',
         'description',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
