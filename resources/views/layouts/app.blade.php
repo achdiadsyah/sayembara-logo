@@ -5,13 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Laravel') }} - {{$title ? $title : ''}}</title>
 
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link href="{{asset('assets/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
     
     <link href="{{asset('assets/css/sb-admin-2.min.css')}}" rel="stylesheet">
+
+    <link href="{{asset('assets/css/costum.css')}}" rel="stylesheet">
 
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     
@@ -23,20 +25,73 @@
 
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-                <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
-                </div>
-                <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('home')}}">
+                <div class="sidebar-brand-text mx-3">Ruhul Islam</div>
             </a>
 
             <hr class="sidebar-divider my-0">
 
-            <li class="nav-item">
-                <a class="nav-link" href="index.html">
+            <li class="nav-item {{ (request()->is('home')) ? 'active' : '' }}">
+                <a class="nav-link" href="{{route('home')}}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span></a>
+                    <span>Dashboard</span>
+                </a>
             </li>
+
+            @if(auth()->user()->is_admin == 0)
+
+            <li class="nav-item {{ (request()->is('syarat-perlombaan')) ? 'active' : '' }}">
+                <a class="nav-link" href="{{route('home')}}">
+                    <i class="fas fa-fw fa-pen"></i>
+                    <span>Syarat Perlombaan</span>
+                </a>
+            </li>
+
+            <li class="nav-item {{ (request()->is('upload-karya')) ? 'active' : '' }}">
+                <a class="nav-link" href="{{route('home')}}">
+                    <i class="fas fa-fw fa-upload"></i>
+                    <span>Upload Karya</span>
+                </a>
+            </li>
+
+            <li class="nav-item {{ (request()->is('contact')) ? 'active' : '' }}">
+                <a class="nav-link" href="{{route('home')}}">
+                    <i class="fas fa-fw fa-phone"></i>
+                    <span>Layanan Informasi</span>
+                </a>
+            </li>
+
+            @else
+
+            <li class="nav-item {{ (request()->is('all-user')) ? 'active' : '' }}">
+                <a class="nav-link" href="{{route('home')}}">
+                    <i class="fas fa-fw fa-users"></i>
+                    <span>Peserta</span>
+                </a>
+            </li>
+
+            <li class="nav-item {{ (request()->is('lihat-karya')) ? 'active' : '' }}">
+                <a class="nav-link" href="{{route('home')}}">
+                    <i class="fas fa-fw fa-th"></i>
+                    <span>Lihat Karya</span>
+                </a>
+            </li>
+
+            <li class="nav-item {{ (request()->is('assesment')) ? 'active' : '' }}">
+                <a class="nav-link" href="{{route('home')}}">
+                    <i class="fas fa-fw fa-th"></i>
+                    <span>Lulus Seleksi</span>
+                </a>
+            </li>
+
+            <li class="nav-item {{ (request()->is('passed')) ? 'active' : '' }}">
+                <a class="nav-link" href="{{route('home')}}">
+                    <i class="fas fa-fw fa-th"></i>
+                    <span>Lulus Finalisasi</span>
+                </a>
+            </li>
+
+            @endif
 
             <hr class="sidebar-divider d-none d-md-block">
 
@@ -58,25 +113,13 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->name ? 'Salam, '.Auth::user()->name : 'Salam, ' }}</span>
-                                <img class="img-profile rounded-circle"
-                                    src="img/undraw_profile.svg">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->name ? 'Salam, '.Auth::user()->name : 'Salam, ' }}
+                                <br>
+                                {{ Auth::user()->is_admin == 1 ? "Login as Admin" : "Login as User"}}
+                                </span>
+                                <img class="img-profile rounded-circle" src="{{'https://ui-avatars.com/api/?name='.auth()->user()->email}}">
                             </a>
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Profile
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Settings
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Activity Log
-                                </a>
-                                <div class="dropdown-divider"></div>
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout

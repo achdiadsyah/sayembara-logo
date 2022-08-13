@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use App\Models\Journey;
+use App\Models\JourneyHistory;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -34,11 +35,19 @@ class RegisterController extends Controller
     {
         $journey = Journey::where('slug', 'new')->first();
 
-        return User::create([
+        $user = User::create([
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'is_admin' => '0',
+        ]);
+
+        $history = JourneyHistory::create([
+            'user_id'   => $user->id,
             'journey_id' => $journey->id,
         ]);
+
+        if($user && $history){
+            return $user;
+        }
     }
 }

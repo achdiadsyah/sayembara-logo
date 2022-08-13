@@ -22,10 +22,8 @@ return new class extends Migration
             $table->string('name')->nullable();
             $table->string('nik')->unique()->nullable();
             $table->string('phone')->nullable();
-            $table->enum('registered_as', ['teacher', 'alumni', 'student'])->nullable();
+            $table->enum('registered_as', ['teacher', 'alumni', 'student', 'admin'])->nullable();
             $table->string('registered_as_info')->nullable();
-            $table->string('journey_id');
-            $table->foreign('journey_id')->references('id')->on('journeys');
             $table->rememberToken();
             $table->timestamps();
         });

@@ -103,6 +103,7 @@ $("#registered_as").on("change", function() {
     if($(this).val() == 'teacher'){
         $('#registered_as_info_group').removeClass('d-none');
         $('#registered_as_info_label').html('Menjabat Sebagai ?');
+        $('#registered_as_info').attr('placeholder','Contoh : Guru / Ustad / Staff TU');
         $('#registered_as_info').get(0).type = 'text';
         
     } else if($(this).val() == 'alumni'){
@@ -110,12 +111,14 @@ $("#registered_as").on("change", function() {
         $('#registered_as_info_group').removeClass('d-none');
         $('#registered_as_info_label').html('Tahun Tamat ?');
         $('#registered_as_info').get(0).type = 'number';
+        $('#registered_as_info').attr('placeholder','Contoh : 2014');
         $('#registered_as_info').attr('min','1990');
         $('#registered_as_info').attr('max','2022');
         
     } else if($(this).val() == 'student'){
         $('#registered_as_info_group').removeClass('d-none');
         $('#registered_as_info_label').html('Kelas Saat ini?');
+        $('#registered_as_info').attr('placeholder','Contoh : I IPA 3');
         $('#registered_as_info').get(0).type = 'text';
     } else {
         $('#registered_as_info_group').addClass('d-none');
