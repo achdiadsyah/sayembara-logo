@@ -27,7 +27,12 @@
                     @enderror
                 </div>
                 <div class="col-sm-6">
-                    <input id="password-confirm" type="password" class="form-control form-control-user" name="password_confirmation" required autocomplete="new-password" placeholder="Repeat Password">
+                    <input id="password-confirm" type="password" class="form-control form-control-user @error('password_confirmation') is-invalid @enderror" name="password_confirmation" required autocomplete="new-password" placeholder="Repeat Password">
+                    @error('password_confirmation')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                 </div>
             </div>
             <button class="btn btn-primary btn-user btn-block" type="submit" onClick="this.form.submit(); this.disabled=true; this.innerText ='Registering Data...'; ">

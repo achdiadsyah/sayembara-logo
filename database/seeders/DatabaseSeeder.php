@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        Journey::insert([
+        Journey::create([
             'id'            => \Ramsey\Uuid\Uuid::uuid4()->toString(),
             'name'          => 'New Registration',
             'slug'          => 'new',
@@ -27,7 +27,7 @@ class DatabaseSeeder extends Seeder
             'updated_at'    => date("Y-m-d H:i:s"),
         ]);
 
-        Journey::insert([
+        Journey::create([
             'id'            => \Ramsey\Uuid\Uuid::uuid4()->toString(),
             'name'          => 'Need Review',
             'slug'          => 'need-review',
@@ -37,7 +37,7 @@ class DatabaseSeeder extends Seeder
             'updated_at'    => date("Y-m-d H:i:s"),
         ]);
 
-        Journey::insert([
+        Journey::create([
             'id'            => \Ramsey\Uuid\Uuid::uuid4()->toString(),
             'name'          => 'On Review',
             'slug'          => 'on-review',
@@ -47,7 +47,7 @@ class DatabaseSeeder extends Seeder
             'updated_at'    => date("Y-m-d H:i:s"),
         ]);
 
-        Journey::insert([
+        Journey::create([
             'id'            => \Ramsey\Uuid\Uuid::uuid4()->toString(),
             'name'          => 'Assesment',
             'slug'          => 'assesment',
@@ -57,7 +57,7 @@ class DatabaseSeeder extends Seeder
             'updated_at'    => date("Y-m-d H:i:s"),
         ]);
 
-        Journey::insert([
+        Journey::create([
             'id'            => \Ramsey\Uuid\Uuid::uuid4()->toString(),
             'name'          => 'Passed',
             'slug'          => 'passed',
@@ -67,7 +67,7 @@ class DatabaseSeeder extends Seeder
             'updated_at'    => date("Y-m-d H:i:s"),
         ]);
 
-        Journey::insert([
+        Journey::create([
             'id'            => \Ramsey\Uuid\Uuid::uuid4()->toString(),
             'name'          => 'Unpassed',
             'slug'          => 'unpassed',
@@ -77,7 +77,7 @@ class DatabaseSeeder extends Seeder
             'updated_at'    => date("Y-m-d H:i:s"),
         ]);
 
-        User::insert([
+        User::create([
             'id'                    => \Ramsey\Uuid\Uuid::uuid4()->toString(),
             'email'                 => 'admin@ruhulislam.com',
             'email_verified_at'     => date("Y-m-d H:i:s"),

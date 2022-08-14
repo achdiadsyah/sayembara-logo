@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('journey_histories', function (Blueprint $table) {
-            $table->uuid('id')->primary();
+            $table->id();
             $table->string('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('journey_id');

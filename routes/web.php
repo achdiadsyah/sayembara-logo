@@ -42,4 +42,8 @@ Route::middleware(['auth'])->group(function () {
         Route::get('upload-karya', [App\Http\Controllers\KaryaController::class, 'index'])->name('karya');
         Route::post('upload-karya', [App\Http\Controllers\KaryaController::class, 'save'])->name('karya-create');
     });
+
+    Route::middleware(['isadmin'])->group(function () {
+        Route::get('peserta-baru', [App\Http\Controllers\AdminController::class, 'pesertaBaru'])->name('peserta-baru');
+    });
 });

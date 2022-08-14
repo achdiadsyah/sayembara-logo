@@ -9,7 +9,7 @@
                     <div class="text-center fs-4 fw-bold">Form Unggah Karya Anda</div>
                     <hr>
                     @if(empty($document))
-                    <form action="{{route('karya-create')}}" method="post" enctype="multipart/form-data">
+                    <form action="{{route('karya-create')}}" method="post" id="form-karya" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
                             <label for="">Upload File Anda</label>
@@ -31,7 +31,9 @@
                             @enderror
                         </div>
                         <div class="text-center">
-                            <button type="submit" class="btn btn-primary" onClick="this.form.submit(); this.disabled=true; this.innerText ='Uploading...'; ">Save Document</button>
+                            <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#showSyarat">
+                                Save Document
+                            </button>
                         </div>
                     </form>
                     @else
@@ -44,7 +46,10 @@
                             <div class="col-md-4">
                                 <div class="text-center">
                                     <p class="lead">Karya Anda :</p>
-                                    <img src="{{ asset('storage/'.auth()->user()->document->file) }}" class="img-thumbnail" width="200px" onclick="window.open(this.src)" alt="Karya">
+                                    <a data-magnify="gallery" data-caption="{{ auth()->user()->name }}"
+                                        href="{{ asset('storage/'.auth()->user()->document->file) }}">
+                                        <img src="{{ asset('storage/'.auth()->user()->document->file) }}" class="img-thumbnail" width="200px" alt="Karya">
+                                    </a>
                                 </div>
                             </div>
                             <div class="col-md-8">
@@ -61,18 +66,47 @@
     </div>
 </div>
 
+<div class="modal fade" id="showSyarat" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="text-center">
+                    <div class="fs-4 fw-bold">User Agreement</div>
+                    <hr>
+                    <p class="lead">
+                        Dengan ini saya menyatakan telah bersedia mengikuti seluruh persyaratan yang telah di sebutkan oleh panitia penyelenggara.
+                        <br>
+                        <br>
+                        Bila terjadi pelanggaran di kemudian hari, saya bersedia di gugurkan dari kategori peserta, finalis, atau dalam bentuk apapun.
+                        <br>
+                        <br>
+                    </p>
+                    <p>
+                        Pastikan anda telah membaca seluruh persyaratan dari link berikut.
+                        <a href="{{route('syarat')}}" target="_blank">Lihat Persyaratan</a>
+                    </p>
+                    <hr>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onClick="$('#form-karya').submit(); this.disabled=true; this.innerText ='Uploading Data...'; ">Accept Agreement & Upload</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 @endsection
 
 @push('foot-script')
 <script>    
 $(function(){
     const inputElement = document.querySelector('#file');
+    FilePond.registerPlugin(FilePondPluginImagePreview);
     FilePond.create(inputElement, {
         storeAsFile: true,
         maxFiles: 1,
         allowBrowse: true,
         allowFileEncode: true,
-        labelIdle: 'Drag & Drop your files or <span class="filepond--label-action"> Browse </span><br>Allowed : .jpg .jpeg .png<br>Max Size : 2MB'
+        labelIdle: 'Drag & Drop your files or <span class="filepond--label-action"> Browse </span><br>Allowed : .jpg .jpeg .png<br>Max Size : 2MB<br>Resolution : 800px X 600px'
     });
 });
 </script>
