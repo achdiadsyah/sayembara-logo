@@ -13,13 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('journey_histories', function (Blueprint $table) {
+        Schema::create('configs', function (Blueprint $table) {
             $table->id();
-            $table->string('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->string('journey_id');
-            $table->foreign('journey_id')->references('id')->on('journeys');
-            $table->timestamps();
+            $table->date('open_register');
+            $table->date('close_register');
+            $table->time('close_register_time');
+            $table->date('annoucement');
         });
     }
 
@@ -30,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('journey_histories');
+        Schema::dropIfExists('configs');
     }
 };

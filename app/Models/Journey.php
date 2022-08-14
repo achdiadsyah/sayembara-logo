@@ -11,6 +11,8 @@ class Journey extends Model
     use HasFactory;
     use Uuids;
 
+    protected $guarded = [];
+
     protected $fillable = [
         'name',
         'slug',

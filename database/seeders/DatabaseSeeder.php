@@ -6,6 +6,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\Journey;
 use App\Models\User;
+use App\Models\Config;
 use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
@@ -17,7 +18,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        Journey::insert([
+        Journey::create([
             'id'            => \Ramsey\Uuid\Uuid::uuid4()->toString(),
             'name'          => 'New Registration',
             'slug'          => 'new',
@@ -27,7 +28,7 @@ class DatabaseSeeder extends Seeder
             'updated_at'    => date("Y-m-d H:i:s"),
         ]);
 
-        Journey::insert([
+        Journey::create([
             'id'            => \Ramsey\Uuid\Uuid::uuid4()->toString(),
             'name'          => 'Need Review',
             'slug'          => 'need-review',
@@ -37,7 +38,7 @@ class DatabaseSeeder extends Seeder
             'updated_at'    => date("Y-m-d H:i:s"),
         ]);
 
-        Journey::insert([
+        Journey::create([
             'id'            => \Ramsey\Uuid\Uuid::uuid4()->toString(),
             'name'          => 'On Review',
             'slug'          => 'on-review',
@@ -47,7 +48,7 @@ class DatabaseSeeder extends Seeder
             'updated_at'    => date("Y-m-d H:i:s"),
         ]);
 
-        Journey::insert([
+        Journey::create([
             'id'            => \Ramsey\Uuid\Uuid::uuid4()->toString(),
             'name'          => 'Assesment',
             'slug'          => 'assesment',
@@ -57,7 +58,7 @@ class DatabaseSeeder extends Seeder
             'updated_at'    => date("Y-m-d H:i:s"),
         ]);
 
-        Journey::insert([
+        Journey::create([
             'id'            => \Ramsey\Uuid\Uuid::uuid4()->toString(),
             'name'          => 'Passed',
             'slug'          => 'passed',
@@ -67,7 +68,7 @@ class DatabaseSeeder extends Seeder
             'updated_at'    => date("Y-m-d H:i:s"),
         ]);
 
-        Journey::insert([
+        Journey::create([
             'id'            => \Ramsey\Uuid\Uuid::uuid4()->toString(),
             'name'          => 'Unpassed',
             'slug'          => 'unpassed',
@@ -77,7 +78,7 @@ class DatabaseSeeder extends Seeder
             'updated_at'    => date("Y-m-d H:i:s"),
         ]);
 
-        User::insert([
+        User::create([
             'id'                    => \Ramsey\Uuid\Uuid::uuid4()->toString(),
             'email'                 => 'admin@ruhulislam.com',
             'email_verified_at'     => date("Y-m-d H:i:s"),
@@ -90,6 +91,14 @@ class DatabaseSeeder extends Seeder
             'registered_as_info'    => 'Super Admin',
             'created_at'            => date("Y-m-d H:i:s"),
             'updated_at'            => date("Y-m-d H:i:s"),
+        ]);
+
+        Config::insert([
+            'id'                    => 1,
+            'open_register'         => date("Y-m-d"),
+            'close_register'        => date("Y-m-d"),
+            'close_register_time'   => date("H:i:s"),
+            'annoucement'           => date("Y-m-d"),
         ]);
     }
 }

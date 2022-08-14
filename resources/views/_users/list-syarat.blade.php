@@ -33,12 +33,12 @@
             <li class="fw-bold">Seluruh karya yang dilombakan menjadi milik penyelenggara secara mutlak.</li>
         </ol>
     </li>
-
+    @php($config = \App\Models\Config::where('id', 1)->first())
     <li class="py-2"><div class="fs-5 fw-bold">Ketentuan:</div>
         <ol>
-            <li>Pendaftaran dan pengiriman karya dibuka mulai hari Jum’at, 05 Agustus 2022.</li>
-            <li>Tenggat waktu pengiriman karya adalah hari Sabtu, 20 Agustus 2022, pukul 16.00 WIB.</li>
-            <li>Pemenang akan diumumkan pada hari Kamis, 25 Agustus 2022</li>
+            <li>Pendaftaran dan pengiriman karya dibuka mulai hari <b>{{ longdate_indo($config->open_register) }}</b></li>
+            <li>Tenggat waktu pengiriman karya adalah hari <b>{{ longdate_indo($config->close_register) }}</b>, pukul <b>{{ $config->close_register_time }} WIB.</b></li>
+            <li>Pemenang akan diumumkan pada hari <b>{{ longdate_indo($config->annoucement) }}</b></li>
             <li>Jika diperlukan peserta bersedia mempresentasikan hasil karya (offline/online)</li>
             <li>Madrasah Aliyah Dayah Ruhul Islam Anak Bangsa berhak menggunakan logo pemenang sayembara untuk segala kepentingan dan melakukan penyesuaian atau modifikasi jika diperlukan.</li>
             <li>Penggunaan logo pemenang sayembara tidak dibatasi jangka waktu.</li>

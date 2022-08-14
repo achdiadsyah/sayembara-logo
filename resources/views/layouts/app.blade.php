@@ -14,8 +14,10 @@
     <link href="{{asset('assets/css/sb-admin-2.min.css')}}" rel="stylesheet">
 
     <link href="{{asset('assets/css/costum.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/css/jquery.magnify.css')}}" rel="stylesheet">
 
     <link href="{{asset('assets/css/filepond.css')}}" rel="stylesheet">
+    <link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css" rel="stylesheet"/>
 
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     
@@ -68,21 +70,21 @@
             <li class="nav-item {{ (request()->is('all-user')) ? 'active' : '' }}">
                 <a class="nav-link" href="{{route('home')}}">
                     <i class="fas fa-fw fa-users"></i>
-                    <span>Peserta</span>
+                    <span>Peserta Baru</span>
                 </a>
             </li>
 
             <li class="nav-item {{ (request()->is('lihat-karya')) ? 'active' : '' }}">
                 <a class="nav-link" href="{{route('home')}}">
                     <i class="fas fa-fw fa-th"></i>
-                    <span>Lihat Karya</span>
+                    <span>Review Karya</span>
                 </a>
             </li>
 
             <li class="nav-item {{ (request()->is('assesment')) ? 'active' : '' }}">
                 <a class="nav-link" href="{{route('home')}}">
                     <i class="fas fa-fw fa-th"></i>
-                    <span>Lulus Seleksi</span>
+                    <span>Lulus Review</span>
                 </a>
             </li>
 
@@ -90,6 +92,22 @@
                 <a class="nav-link" href="{{route('home')}}">
                     <i class="fas fa-fw fa-th"></i>
                     <span>Lulus Finalisasi</span>
+                </a>
+            </li>
+
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <li class="nav-item {{ (request()->is('passed')) ? 'active' : '' }}">
+                <a class="nav-link" href="{{route('home')}}">
+                    <i class="fas fa-fw fa-th"></i>
+                    <span>Passed</span>
+                </a>
+            </li>
+
+            <li class="nav-item {{ (request()->is('passed')) ? 'active' : '' }}">
+                <a class="nav-link" href="{{route('home')}}">
+                    <i class="fas fa-fw fa-th"></i>
+                    <span>Unpassed</span>
                 </a>
             </li>
 
@@ -140,10 +158,11 @@
 
             </div>
 
-            <footer class="sticky-footer bg-white">
+            <footer class="sticky-footer bg-white py-3">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
                         <span>Copyright &copy; Ruhul Islam Anak Bangsa</span>
+                        <div class="mt-1">Made with <i class="fas fa-heart text-danger"></i> By <a href="https://instagram.com/achdiadsyah" target="_blank"> Ryan Achdiadsyah</a></div>
                     </div>
                 </div>
             </footer>
@@ -180,8 +199,29 @@
     <script src="{{asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
     <script src="{{asset('assets/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
     <script src="{{asset('assets/js/sb-admin-2.min.js')}}"></script>
+    <script src="{{asset('assets/js/jquery.magnify.js')}}"></script>
     <script src="https://unpkg.com/filepond/dist/filepond.min.js"></script>
     <script src="https://unpkg.com/jquery-filepond/filepond.jquery.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
+    <script>
+    $('[data-magnify]').magnify({
+        headerToolbar: [
+        'minimize',
+        'maximize',
+        'close'
+        ],
+        footerToolbar: [
+        'zoomIn',
+        'zoomOut',
+        'fullscreen',
+        'actualSize',
+        'rotateLeft',
+        'rotateRight',
+        ],
+        modalWidth: 1280,
+        modalHeight: 720,
+    });
+    </script>
 
     @stack('foot-script')
     

@@ -5,7 +5,7 @@
             <div class="card card-flush">
                 <div class="card-body">
                     <div class="col-12">
-                        @foreach ($journeys as $item)
+                        @foreach ($journeys->sortByDesc('order_number') as $item)
                         @if($latest_journey[0]->id == $item->id)
                         <div class="tl-item active">
                         @else
@@ -47,7 +47,10 @@
             <div class="modal-body">
                 <div class="text-center">
                     <p class="lead">Karya Anda :</p>
-                    <img src="{{ asset('storage/'.auth()->user()->document->file) }}" class="img-thumbnail" width="200px" onclick="window.open(this.src)" alt="Karya">
+                    <a data-magnify="gallery" data-caption="{{ auth()->user()->name }}"
+                        href="{{ asset('storage/'.auth()->user()->document->file) }}">
+                        <img src="{{ asset('storage/'.auth()->user()->document->file) }}" class="img-thumbnail" width="300px" alt="Karya">
+                    </a>
                     <hr>
                     <p class="lead">Penjelasan Anda :</p>
                     <textarea class="form-control" rows="15" disabled>{{auth()->user()->document->description}}</textarea>
