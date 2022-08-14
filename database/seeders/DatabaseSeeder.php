@@ -6,6 +6,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\Journey;
 use App\Models\User;
+use App\Models\Config;
 use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
@@ -90,6 +91,14 @@ class DatabaseSeeder extends Seeder
             'registered_as_info'    => 'Super Admin',
             'created_at'            => date("Y-m-d H:i:s"),
             'updated_at'            => date("Y-m-d H:i:s"),
+        ]);
+
+        Config::insert([
+            'id'                    => 1,
+            'open_register'         => date("Y-m-d"),
+            'close_register'        => date("Y-m-d"),
+            'close_register_time'   => date("H:i:s"),
+            'annoucement'           => date("Y-m-d"),
         ]);
     }
 }

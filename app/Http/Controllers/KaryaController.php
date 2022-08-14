@@ -23,10 +23,11 @@ class KaryaController extends Controller
     public function save(Request $request)
     {
         $validated = Validator::make($request->all(), [
-            'description'   => ['required'],
+            'description'   => ['required', 'min:100'],
             'file'          => ['required','mimes:jpg,jpeg,png','max:2048', 'dimensions:max_width=800,max_height=600'],
         ],
         [
+            'description.min'       => 'Minimal 100 karakter',
             'description.required'  => 'Bagian Deskripsi penjelasan karya wajib di isi',
             'file.required'         => 'Anda belum melampirkan file karya anda',
             'file.mimes'            => 'Ekstensi file yang di perbolehkan hanya JPEG / JPG / PNG',

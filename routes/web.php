@@ -36,6 +36,8 @@ Route::middleware(['auth'])->group(function () {
     
     Route::middleware(['completed'])->group(function () {
         Route::get('home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+        Route::get('home-data', [App\Http\Controllers\HomeController::class, 'adminDashboardData'])->name('home-data');
+        Route::post('home-data', [App\Http\Controllers\HomeController::class, 'adminDashboardUpdate'])->name('home-data-update');
         Route::get('info', [App\Http\Controllers\HomeController::class, 'info'])->name('info');
         Route::get('syarat-perlombaan', [App\Http\Controllers\HomeController::class, 'syarat'])->name('syarat');
 

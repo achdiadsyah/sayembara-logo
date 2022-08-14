@@ -95,6 +95,22 @@
                 </a>
             </li>
 
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <li class="nav-item {{ (request()->is('passed')) ? 'active' : '' }}">
+                <a class="nav-link" href="{{route('home')}}">
+                    <i class="fas fa-fw fa-th"></i>
+                    <span>Passed</span>
+                </a>
+            </li>
+
+            <li class="nav-item {{ (request()->is('passed')) ? 'active' : '' }}">
+                <a class="nav-link" href="{{route('home')}}">
+                    <i class="fas fa-fw fa-th"></i>
+                    <span>Unpassed</span>
+                </a>
+            </li>
+
             @endif
 
             <hr class="sidebar-divider d-none d-md-block">
@@ -202,8 +218,8 @@
         'rotateLeft',
         'rotateRight',
         ],
-        modalWidth: 800,
-        modalHeight: 600,
+        modalWidth: 1280,
+        modalHeight: 720,
     });
     </script>
 
