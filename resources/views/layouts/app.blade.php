@@ -63,8 +63,8 @@
 
             @else
 
-            <li class="nav-item {{ (request()->is('all-user')) ? 'active' : '' }}">
-                <a class="nav-link" href="{{route('home')}}">
+            <li class="nav-item {{ (request()->is('peserta-baru')) ? 'active' : '' }}">
+                <a class="nav-link" href="{{route('peserta-baru')}}">
                     <i class="fas fa-fw fa-users"></i>
                     <span>Peserta Baru</span>
                 </a>

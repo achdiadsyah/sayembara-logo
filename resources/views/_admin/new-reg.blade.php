@@ -52,7 +52,7 @@ $(document).ready(function() {
                 {data: 'registered_as', name: 'registered_as'},
                 {data: 'registered_as_info', name: 'registered_as_info'},
                 {render: function (data, type, row) {                    
-                    return `<a href=""" class="btn btn-success btn-sm">Details</a>`;
+                    return `<a href="" class="btn btn-danger btn-sm">Delete</a>`;
                 }},
             ]
     });
