@@ -10,17 +10,13 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link href="{{asset('assets/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
-    
+    <link href="{{asset('assets/vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/sb-admin-2.min.css')}}" rel="stylesheet">
-
     <link href="{{asset('assets/css/costum.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/jquery.magnify.css')}}" rel="stylesheet">
-
     <link href="{{asset('assets/css/filepond.css')}}" rel="stylesheet">
     <link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css" rel="stylesheet"/>
-
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-    
+        
     @stack('head-script')
 </head>
 
@@ -200,6 +196,8 @@
     <script src="{{asset('assets/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
     <script src="{{asset('assets/js/sb-admin-2.min.js')}}"></script>
     <script src="{{asset('assets/js/jquery.magnify.js')}}"></script>
+    <script src="{{asset('assets/vendor/datatables/jquery.dataTables.min.js')}}"></script>
+    <script src="{{asset('assets/vendor/datatables/dataTables.bootstrap4.min.js')}}"></script>
     <script src="https://unpkg.com/filepond/dist/filepond.min.js"></script>
     <script src="https://unpkg.com/jquery-filepond/filepond.jquery.js"></script>
     <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
