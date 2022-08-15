@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/ruhulisl/sayembara.ruhulislam.com/
+    - /bin/cp -R images $DEPLOYPATH
