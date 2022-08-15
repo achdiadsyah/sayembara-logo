@@ -25,11 +25,11 @@ Route::get('/clear-cache', function() {
     return "Cache is cleared";
 });
 
-// Auth::routes(['verify' => true]);
-Auth::routes();
+Auth::routes(['verify' => true]);
+// Auth::routes();
 
-// Route::middleware(['auth', 'verified'])->group(function () {
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'verified'])->group(function () {
+// Route::middleware(['auth'])->group(function () {
 
     Route::get('completing-data', [App\Http\Controllers\HomeController::class, 'completing'])->name('completing');
     Route::post('completing-data', [App\Http\Controllers\HomeController::class, 'updateData'])->name('completing-data');

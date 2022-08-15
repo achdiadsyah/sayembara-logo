@@ -3,8 +3,29 @@
 @section('content')
 <div class="col-lg-6">
     <div class="p-5">
+        @php($config = \App\Models\Config::where('id', 1)->first())
+
+        @if(date('Y-m-d H:i:s') >= $config->close_register ." " .$config->close_register_time)
+        
+        <div class="text-center mb-4">
+            <h1 class="h4 text-gray-900">Sorry, Registration was closed!</h1>
+        </div>
         <div class="text-center">
-            <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+            <a class="small" href="{{ route('login') }}">Already have an account? Login!</a>
+        </div>
+
+        @elseif(date('Y-m-d') < $config->open_register)
+
+        <div class="text-center mb-4">
+            <h1 class="h4 text-gray-900">Sorry, registration is not open yet!</h1>
+            <h5>You can register at : {{longdate_indo($config->open_register)}}</h5>
+        </div>
+
+        @else
+
+        <div class="text-center mb-4">
+            <h1 class="h4 text-gray-900">Create an Account!</h1>
+            <h6>Before : {{longdate_indo($config->close_register) ." | " .$config->close_register_time}} WIB</h6>
         </div>
         <form class="user" method="POST" action="{{ route('register') }}">
             @csrf
@@ -46,6 +67,8 @@
         <div class="text-center">
             <a class="small" href="{{ route('login') }}">Already have an account? Login!</a>
         </div>
+        
+        @endif
     </div>
 </div>
 @endsection
