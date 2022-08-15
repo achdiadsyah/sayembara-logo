@@ -40,6 +40,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'is_admin' => '0',
+            'journey_id' => $journey->id,
         ]);
 
         $history = JourneyHistory::create([

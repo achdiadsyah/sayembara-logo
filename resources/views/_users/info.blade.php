@@ -12,6 +12,10 @@
                         <p class="lead">Ustad. Rachmad Munazir</p>
                         <a href="https://wa.me/628126669310" target="_blank" class="btn btn-success"><i class="fab fa-whatsapp" aria-hidden="true"></i> Whatsapp</a>
                         <a href="tel:+628126669310" target="_blank"class="btn btn-info"><i class="fas fa-phone" aria-hidden="true"></i> Phone</a>
+                        
+                        <p class="lead mt-3">Ustad. Riza</p>
+                        <a href="https://wa.me/6285372035382" target="_blank" class="btn btn-success"><i class="fab fa-whatsapp" aria-hidden="true"></i> Whatsapp</a>
+                        <a href="tel:+6285372035382" target="_blank"class="btn btn-info"><i class="fas fa-phone" aria-hidden="true"></i> Phone</a>
                     </div>
                 </div>
             </div>

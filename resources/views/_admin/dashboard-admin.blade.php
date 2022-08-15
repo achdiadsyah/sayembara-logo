@@ -11,7 +11,7 @@
                                 <span class="sr-only">Loading...</span>
                             </div>
                         </div>
-                        <a href="" class="btn btn-sm btn-primary">See All</a>
+                        <a href="{{route('peserta-baru')}}" class="btn btn-sm btn-primary">See All</a>
                     </div>
                     <div class="col-auto mr-2 mr-2">
                         <i class="fas fa-users fa-2x text-gray-300"></i>
