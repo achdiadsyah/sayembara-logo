@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Document;
 use App\Models\Journey;
 use App\Models\JourneyHistory;
+use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 
@@ -45,6 +46,10 @@ class KaryaController extends Controller
                 $journey = Journey::where('slug', 'need-review')->first();
                 JourneyHistory::create([
                     'user_id'   =>  auth()->user()->id,
+                    'journey_id' => $journey->id,
+                ]);
+
+                User::where('id',  auth()->user()->id)->update([
                     'journey_id' => $journey->id,
                 ]);
 

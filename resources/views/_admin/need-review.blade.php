@@ -6,7 +6,7 @@
         <div class="col-md-12">
             <div class="card card-flush">
                 <div class="card-header">
-                    <div class="card-title">Peserta Baru</div>
+                    <div class="card-title">Need Review</div>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -15,12 +15,8 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Name</th>
-                                    <th>Email</th>
-                                    <th>NIK</th>
-                                    <th>Phone</th>
-                                    <th>Registered As</th>
-                                    <th>Registered Info</th>
-                                    <th>Is Email Verified</th>
+                                    <th>See File</th>
+                                    <th style="width: 10%">Description</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -43,22 +39,16 @@ $(document).ready(function() {
     $('#dataTable').DataTable({
             processing: true,
             serverSide: true,
-            ajax: "{{ route('peserta-baru') }}",
+            ajax: "{{ route('need-review') }}",
             columns: [
                 {data: 'DT_RowIndex', name: 'DT_RowIndex'},
                 {data: 'name', name: 'name'},
-                {data: 'email', name: 'email'},
-                {data: 'nik', name: 'nik'},
-                {data: 'phone', name: 'phone'},
-                {data: 'registered_as', name: 'registered_as'},
-                {data: 'registered_as_info', name: 'registered_as_info'},
-                {data: 'email_verified_at', name: 'email_verified_at', render: function (data, type, row) {
-                    if (row.email_verified_at !== '') {
-                        return '<span class="badge badge-success">Verified</span>';
-                    } else {
-                        return '<span class="badge badge-danger">Not-Verified</span>';
-                    }
+                {data: 'document.file', name: 'document.file', render: function (data, type, row) {
+                    return `<a class="btn btn-sm btn-primary" data-magnify="gallery" data-caption="{{asset('storage')}}/${row.document.file}" href="${row.document.file}">See File
+                                <img src="{{asset('storage')}}/${row.document.file}" class="img-thumbnail" width="200px" alt="Karya">
+                            </a>`;
                 }},
+                {data: 'document.description', name: 'document.description'},
                 {render: function (data, type, row) {                    
                     return `<button class="btn btn-danger btn-sm">Delete</button>`;
                 }},

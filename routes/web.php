@@ -47,5 +47,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::middleware(['isadmin'])->group(function () {
         Route::get('peserta-baru', [App\Http\Controllers\AdminController::class, 'pesertaBaru'])->name('peserta-baru');
+        Route::get('need-review', [App\Http\Controllers\AdminController::class, 'needReview'])->name('need-review');
     });
 });

@@ -25,4 +25,21 @@ class AdminController extends Controller
         return view('_admin.new-reg', $data);
 
     }
+
+    public function needReview(Request $request)
+    {
+
+        if ($request->ajax()) {
+            $data = User::where('is_admin', 0)->where('journey_id', Journey::where('slug', 'need-review')->first()->id)->with('document')->latest()->get();
+            return Datatables::of($data)
+                ->addIndexColumn()
+                ->rawColumns(['action'])
+                ->make(true);
+        }
+        $data = [
+            'title'             => 'Need Review',
+        ];
+        return view('_admin.need-review', $data);
+
+    }
 }
