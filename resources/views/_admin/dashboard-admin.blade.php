@@ -32,7 +32,7 @@
                                 <span class="sr-only">Loading...</span>
                             </div>
                         </div>
-                        <a href="" class="btn btn-sm btn-secondary">See All</a>
+                        <a href="{{route('need-review')}}" class="btn btn-sm btn-secondary">See All</a>
                     </div>
                     <div class="col-auto mr-2">
                         <i class="fas fa-pen fa-2x text-gray-300"></i>
@@ -53,7 +53,7 @@
                                 <span class="sr-only">Loading...</span>
                             </div>
                         </div>
-                        <a href="" class="btn btn-sm btn-danger">See All</a>
+                        <a href="{{route('on-review')}}" class="btn btn-sm btn-danger">See All</a>
                     </div>
                     <div class="col-auto mr-2">
                         <i class="fas fa-check fa-2x text-gray-300"></i>
@@ -74,7 +74,7 @@
                                 <span class="sr-only">Loading...</span>
                             </div>
                         </div>
-                        <a href="" class="btn btn-sm btn-success">See All</a>
+                        <a href="{{route('assesment')}}" class="btn btn-sm btn-success">See All</a>
                     </div>
                     <div class="col-auto mr-2">
                         <i class="fas fa-graduation-cap fa-2x text-gray-300"></i>

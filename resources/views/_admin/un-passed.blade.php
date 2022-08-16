@@ -6,7 +6,7 @@
         <div class="col-md-12">
             <div class="card card-flush">
                 <div class="card-header">
-                    <div class="card-title">Peserta Baru</div>
+                    <div class="card-title">Tidak Lolos</div>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -15,12 +15,10 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Name</th>
-                                    <th>Email</th>
-                                    <th>NIK</th>
-                                    <th>Phone</th>
                                     <th>Registered As</th>
-                                    <th>Registered Info</th>
-                                    <th>Is Email Verified</th>
+                                    <th>Registered As</th>
+                                    <th>Upload AT</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -39,25 +37,19 @@
 @push('foot-script')
 <script type="text/javascript">
 $(document).ready(function() {
-    var table = $('#dataTable').DataTable({
+    $('#dataTable').DataTable({
             processing: true,
             serverSide: true,
-            ajax: "{{ route('peserta-baru') }}",
+            ajax: "{{ route('un-passed') }}",
             columns: [
                 {data: 'DT_RowIndex', name: 'DT_RowIndex'},
                 {data: 'name', name: 'name'},
-                {data: 'email', name: 'email'},
-                {data: 'nik', name: 'nik'},
-                {data: 'phone', name: 'phone'},
                 {data: 'registered_as', name: 'registered_as'},
                 {data: 'registered_as_info', name: 'registered_as_info'},
-                {data: 'email_verified_at', name: 'email_verified_at', render: function (data, type, row) {
-                    if (row.email_verified_at !== '') {
-                        return '<span class="badge badge-success">Verified</span>';
-                    } else {
-                        return '<span class="badge badge-danger">Not-Verified</span>';
-                    }
-                }}
+                {data: 'document.created_at', name: 'document.created_at'},
+                {data: 'id', name:'id', render: function (data, type, row) {                    
+                    return `<a href="{{url('un-passed-detail')}}/${row.id}" class="btn btn-success btn-sm">Review</a>`;
+                }},
             ]
     });
 });    
