@@ -63,45 +63,45 @@
 
             @else
 
-            <li class="nav-item {{ (request()->is('peserta-baru')) ? 'active' : '' }}">
+            <li class="nav-item {{ (request()->is('peserta-baru*')) ? 'active' : '' }}">
                 <a class="nav-link" href="{{route('peserta-baru')}}">
                     <i class="fas fa-fw fa-users"></i>
                     <span>Peserta Baru</span>
                 </a>
             </li>
 
-            <li class="nav-item {{ (request()->is('need-review')) ? 'active' : '' }}">
+            <li class="nav-item {{ (request()->is('need-review*')) ? 'active' : '' }}">
                 <a class="nav-link" href="{{route('need-review')}}">
                     <i class="fas fa-fw fa-th"></i>
                     <span>Review Karya</span>
                 </a>
             </li>
 
-            <li class="nav-item {{ (request()->is('assesment')) ? 'active' : '' }}">
-                <a class="nav-link" href="{{route('home')}}">
+            <li class="nav-item {{ (request()->is('on-review*')) ? 'active' : '' }}">
+                <a class="nav-link" href="{{route('on-review')}}">
                     <i class="fas fa-fw fa-th"></i>
                     <span>Lulus Review</span>
                 </a>
             </li>
 
-            <li class="nav-item {{ (request()->is('passed')) ? 'active' : '' }}">
-                <a class="nav-link" href="{{route('home')}}">
+            <li class="nav-item {{ (request()->is('assesment*')) ? 'active' : '' }}">
+                <a class="nav-link" href="{{route('assesment')}}">
                     <i class="fas fa-fw fa-th"></i>
-                    <span>Lulus Finalisasi</span>
+                    <span>Finalis</span>
                 </a>
             </li>
 
             <hr class="sidebar-divider d-none d-md-block">
 
             <li class="nav-item {{ (request()->is('passed')) ? 'active' : '' }}">
-                <a class="nav-link" href="{{route('home')}}">
+                <a class="nav-link" href="{{route('passed')}}">
                     <i class="fas fa-fw fa-th"></i>
                     <span>Passed</span>
                 </a>
             </li>
 
-            <li class="nav-item {{ (request()->is('passed')) ? 'active' : '' }}">
-                <a class="nav-link" href="{{route('home')}}">
+            <li class="nav-item {{ (request()->is('un-passed*')) ? 'active' : '' }}">
+                <a class="nav-link" href="{{route('un-passed')}}">
                     <i class="fas fa-fw fa-th"></i>
                     <span>Unpassed</span>
                 </a>

@@ -15,8 +15,9 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Name</th>
-                                    <th>See File</th>
-                                    <th style="width: 10%">Description</th>
+                                    <th>Registered As</th>
+                                    <th>Registered As</th>
+                                    <th>Upload AT</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -43,14 +44,11 @@ $(document).ready(function() {
             columns: [
                 {data: 'DT_RowIndex', name: 'DT_RowIndex'},
                 {data: 'name', name: 'name'},
-                {data: 'document.file', name: 'document.file', render: function (data, type, row) {
-                    return `<a class="btn btn-sm btn-primary" data-magnify="gallery" data-caption="{{asset('storage')}}/${row.document.file}" href="${row.document.file}">See File
-                                <img src="{{asset('storage')}}/${row.document.file}" class="img-thumbnail" width="200px" alt="Karya">
-                            </a>`;
-                }},
-                {data: 'document.description', name: 'document.description'},
-                {render: function (data, type, row) {                    
-                    return `<button class="btn btn-danger btn-sm">Delete</button>`;
+                {data: 'registered_as', name: 'registered_as'},
+                {data: 'registered_as_info', name: 'registered_as_info'},
+                {data: 'document.created_at', name: 'document.created_at'},
+                {data: 'id', name:'id', render: function (data, type, row) {                    
+                    return `<a href="{{url('need-review-detail')}}/${row.id}" class="btn btn-danger btn-sm">Review</a>`;
                 }},
             ]
     });
