@@ -109,11 +109,9 @@ $("#registered_as").on("change", function() {
     } else if($(this).val() == 'alumni'){
         $('#registered_as_info').val();
         $('#registered_as_info_group').removeClass('d-none');
-        $('#registered_as_info_label').html('Tahun Tamat ?');
-        $('#registered_as_info').get(0).type = 'number';
-        $('#registered_as_info').attr('placeholder','Contoh : 2014');
-        $('#registered_as_info').attr('min','1990');
-        $('#registered_as_info').attr('max','2022');
+        $('#registered_as_info_label').html('Nama Angkatan dan Tahun Tamat ?');
+        $('#registered_as_info').get(0).type = 'text';
+        $('#registered_as_info').attr('placeholder','Contoh : GRIFFIN - 2014');
         
     } else if($(this).val() == 'student'){
         $('#registered_as_info_group').removeClass('d-none');

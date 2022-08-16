@@ -70,8 +70,8 @@
                 </a>
             </li>
 
-            <li class="nav-item {{ (request()->is('lihat-karya')) ? 'active' : '' }}">
-                <a class="nav-link" href="{{route('home')}}">
+            <li class="nav-item {{ (request()->is('need-review')) ? 'active' : '' }}">
+                <a class="nav-link" href="{{route('need-review')}}">
                     <i class="fas fa-fw fa-th"></i>
                     <span>Review Karya</span>
                 </a>
