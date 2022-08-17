@@ -7,6 +7,7 @@ use App\Models\Document;
 use App\Models\Journey;
 use App\Models\JourneyHistory;
 use App\Models\User;
+use App\Models\Config;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,7 +17,8 @@ class KaryaController extends Controller
     {
         $data = [
             'title'             => 'Upload Karya',
-            'document'          => Document::where('user_id', auth()->user()->id)->first()
+            'document'          => Document::where('user_id', auth()->user()->id)->first(),
+            'config'            => Config::where('id', 1)->first(),
         ];
         return view('_users.karya', $data);
     }
