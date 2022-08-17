@@ -9,33 +9,41 @@
                     <div class="text-center fs-4 fw-bold">Form Unggah Karya Anda</div>
                     <hr>
                     @if(empty($document))
-                    <form action="{{route('karya-create')}}" method="post" id="form-karya" enctype="multipart/form-data">
-                        @csrf
-                        <div class="form-group">
-                            <label for="">Upload File Anda</label>
-                            <input type="file" class="form-control-file @error('file') is-invalid @enderror" name="file" id="file" accept="image/*" required>
-                            @error('file')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
+                        @if(date('Y-m-d H:i:s') >= $config->close_register ." " .$config->close_register_time)
+                        <div class="text-center mb-4">
+                            <h1 class="h4 text-gray-900">Sorry, Registration and Upload Schedule was closed!</h1>
+                            <h4>You can't upload any file now, feel free to contact us</h4>
+                            <a href="{{route('info')}}" class="btn btn-primary">Contact Us</a>
                         </div>
+                        @else
+                        <form action="{{route('karya-create')}}" method="post" id="form-karya" enctype="multipart/form-data">
+                            @csrf
+                            <div class="form-group">
+                                <label for="">Upload File Anda</label>
+                                <input type="file" class="form-control-file @error('file') is-invalid @enderror" name="file" id="file" accept="image/*" required>
+                                @error('file')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
 
-                        <div class="form-group">
-                            <label>Jelaskan tentang karya anda secara detail</label>
-                            <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="description" rows="10" required></textarea>
-                            @error('description')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                        <div class="text-center">
-                            <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#showSyarat">
-                                Save Document
-                            </button>
-                        </div>
-                    </form>
+                            <div class="form-group">
+                                <label>Jelaskan tentang karya anda secara detail</label>
+                                <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="description" rows="10" required></textarea>
+                                @error('description')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <div class="text-center">
+                                <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#showSyarat">
+                                    Save Document
+                                </button>
+                            </div>
+                        </form>
+                        @endif
                     @else
                         @if (session('status'))
                             <div class="alert alert-{{ session('status') }}" role="alert">

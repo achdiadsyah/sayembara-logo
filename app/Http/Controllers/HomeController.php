@@ -65,7 +65,7 @@ class HomeController extends Controller
     public function syarat(Request $request)
     {
         $data = [
-            'title'             => 'Upload Karya'
+            'title'             => 'Syarat Pendaftaran Karya'
         ];
         return view('_users.syarat', $data);
     }
