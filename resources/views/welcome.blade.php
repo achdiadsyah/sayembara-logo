@@ -8,6 +8,8 @@
         <meta name="author" content="Made By Ryan Achdiadsyah">
 
         <title>{{ config('app.name', 'Laravel') }}</title>
+
+        <link rel="icon" type="image/x-icon" href="{{asset('assets/img/icon.png')}}">
         
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
